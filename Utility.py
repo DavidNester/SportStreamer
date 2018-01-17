@@ -17,10 +17,12 @@ import webbrowser
 
 def message_box(message):
     r = Tk()
-    r.geometry("800x80")
+    width = min(len(message)*7 + 30, 830)
+    dim = str(width)+'x80'
+    r.geometry(dim)
     r.attributes('-topmost', True)
     r.title('Error')
-    Label(r, text=message).pack()
+    Label(r, text=message,wraplength=800).pack()
 
 
 def open_soda_player(ace_link):
