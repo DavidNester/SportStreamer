@@ -15,23 +15,40 @@ from tkinter import *
 import webbrowser
 #import praw
 
+def message_box(message):
+    r = Tk()
+    r.geometry("800x80")
+    r.attributes('-topmost', True)
+    r.title('Error')
+    Label(r, text=message).pack()
 
-def open_soda_player(link):
-    link = SODA_PLAYER_OPENER + link
-    """Open magnet according to os."""
-    if sys.platform.startswith('linux'):
-        subprocess.Popen(['xdg-open', link],
-                         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    elif sys.platform.startswith('win32'):
-        os.startfile(link)
-    elif sys.platform.startswith('cygwin'):
-        os.startfile(link)
-    elif sys.platform.startswith('darwin'):
-        subprocess.Popen(['open', link],
-                         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    else:
-        subprocess.Popen(['xdg-open', link],
-                         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+def open_soda_player(ace_link):
+    link = SODA_PLAYER_OPENER + ace_link
+    try:
+        """ Open magnet according to os. """
+        if sys.platform.startswith('linux'):
+            subprocess.Popen(['xdg-open', link],
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        elif sys.platform.startswith('win32'):
+            os.startfile(link)
+        elif sys.platform.startswith('cygwin'):
+            os.startfile(link)
+        elif sys.platform.startswith('darwin'):
+            subprocess.Popen(['open', link],
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        else:
+            subprocess.Popen(['xdg-open', link],
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    except:
+        # copy link to clipboard
+        r = Tk()
+        r.withdraw()
+        r.clipboard_clear()
+        r.clipboard_append(ace_link)
+        r.update()
+        r.destroy()
+        message_box('Could not open SodaPlayer. AceStream link copied to clipboard.')
 
 
 def clean_ace(full_string):

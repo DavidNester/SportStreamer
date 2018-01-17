@@ -32,7 +32,7 @@ git init
 git clone https://github.com/DavidNester/SportStreamer.git
 cd SportStreamer
 pip install -r requirements.txt
-python3 GUImain.py 
+python GUImain.py 
 ```
 
 I apologize for the horrible GUI...
