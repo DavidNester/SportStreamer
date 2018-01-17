@@ -22,17 +22,18 @@ def run():
             Frame.__init__(self, master)
             self.master = master
             self.master.title("SportStreamer")
+            self.master.configure(background='slate grey')
             self.game_buttons = []
             self.links = []
             self.forum = None
             self.prev_forum_button = None
             self.game = None
             self.prev_game_button = None
-            self.sport_frame = Frame(self.master, bg='red')
+            self.sport_frame = Frame(self.master, bg='SeaGreen3')
             self.sport_frame.pack(anchor='w', fill='y', side=LEFT)
-            self.game_frame = Frame(self.master, bg='blue')
+            self.game_frame = Frame(self.master, bg='SkyBlue3')
             self.game_frame.pack(fill='y', side=LEFT)
-            self.link_frame = Frame(self.master, bg='green')
+            self.link_frame = Frame(self.master, bg='forest green')
             self.link_frame.pack(fill='y', side=LEFT)
             for sport in SPORTS:
                 button = Button(self.sport_frame, text=sport)
@@ -53,10 +54,10 @@ def run():
             self.game_frame.pack_forget()
             self.link_frame.pack_forget()
             self.game_buttons = []
-            self.game_frame = Frame(self.master, bg='blue')
+            self.game_frame = Frame(self.master, bg='SkyBlue3')
             self.game_frame.pack(fill='y', side=LEFT)
             self.links = []
-            self.link_frame = Frame(self.master, bg='green')
+            self.link_frame = Frame(self.master, bg='forest green')
             self.link_frame.pack(fill='y', side=LEFT)
             for game in self.forum.games:
                 temp_button = Button(self.game_frame, text=game.text)
@@ -71,7 +72,7 @@ def run():
             self.prev_game_button = button
             self.links = []
             self.link_frame.pack_forget()
-            self.link_frame = Frame(self.master, bg='green')
+            self.link_frame = Frame(self.master, bg='forest green')
             self.link_frame.pack(fill='y', side=LEFT)
             self.game = game
             game.get_links()
