@@ -1,4 +1,4 @@
-#     SportsStreamer
+#     SportStreamer
 
 Application used to mine streaming links for various sports from reddit forums designated for
 posting stream links. I use Beautiful Soup to parse the pages and get the links. This uses
