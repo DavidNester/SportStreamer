@@ -32,13 +32,12 @@ def run():
             self.Links = Column(self.master,bg='forest green')
             self.make_sport_buttons()
 
-
         def make_sport_buttons(self):
             buttons = []
             temp_button = None
             for sport in SPORTS:
                 button = Button(self.Sports.frame, text=sport, padx=2, pady=10)
-                button.config(command=lambda address=SPORTS[sport], but=button: self.sport_click(but,address))
+                button.config(command=lambda address=SPORTS[sport], but=button: self.sport_click(but, address))
                 if temp_button is None:
                     temp_button = button
                 buttons += [button]
@@ -56,6 +55,9 @@ def run():
                 temp_button = Button(self.Games.frame, text=game.text, pady=5)
                 temp_button.config(command=lambda g=game, but=temp_button: self.game_click(g, but))
                 buttons += [temp_button]
+            if not buttons:
+                buttons += [Button(self.Games.frame, text='No Games Found. Click to visit forum.',
+                                   command=lambda add=address: webbrowser.open_new_tab(add))]
             self.Games.update_buttons(buttons,'x',5)
 
         def game_click(self, game, button):
@@ -64,12 +66,12 @@ def run():
             self.game = game
             self.game.get_links()
             links = []
-            links += [Label(self.Links.frame, text='ACESTREAMS', relief=GROOVE)]
+            links += [Label(self.Links.frame, text='ACESTREAMS', background='gold', relief=GROOVE)]
             for ace in game.ace_links:
                 link = Button(self.Links.frame, text=ace, fg='blue', cursor='hand2', pady=2)
                 link.config(command=lambda but=link,l=clean_ace(ace): self.open_link(but,l))
                 links += [link]
-            links += [Label(self.Links.frame, text='WEB STREAMS', relief=GROOVE)]
+            links += [Label(self.Links.frame, text='WEB STREAMS', background='gold', relief=GROOVE)]
             for web in game.web_links:
                 link = Button(self.Links.frame, text=web, fg='blue', cursor='hand2', pady=2)
                 link.config(command=lambda but=link, l=web: self.open_link(but,l))
