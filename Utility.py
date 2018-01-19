@@ -13,6 +13,7 @@ import sys
 import subprocess
 from tkinter import *
 import webbrowser
+from unidecode import unidecode
 #import praw
 
 def message_box(message):
@@ -68,6 +69,8 @@ def get_bs(address):
     while response is None and i < 10:
         try:
             response = opener.open(address)
+        except UnicodeEncodeError:
+            response = opener.open(unidecode(address))
         except:
             pass
         i += 1

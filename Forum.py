@@ -1,6 +1,7 @@
 from Utility import *
 from Game import Game
 
+
 class Forum:
     def __init__(self, address):
         self.address = address
