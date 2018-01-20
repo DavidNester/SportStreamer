@@ -12,9 +12,9 @@ import urllib
 import sys
 import subprocess
 from tkinter import *
+from tkinter.ttk import *
 import webbrowser
 from unidecode import unidecode
-#import praw
 
 def message_box(message):
     r = Tk()
@@ -78,6 +78,8 @@ def get_bs(address):
         return None
     page = response.read()
     return BeautifulSoup(page, "html.parser")
+
+
 
 DOMAIN = 'https://www.reddit.com'
 SODA_PLAYER_OPENER = 'sodaplayer://?url='
