@@ -20,7 +20,8 @@ class Column:
         self.frame = VerticalScrolledFrame(master,self.style)
         self.buttons = []
         self.previous = None
-        self.frame.pack(fill='y', side=LEFT)
+        if len(self.buttons) > 0:
+            self.frame.pack(fill='y', side=LEFT)
 
     def select(self, button):
         if self.previous:
@@ -32,6 +33,8 @@ class Column:
         self.buttons = buttons
         for button in self.buttons:
             button.pack(fill=fill, pady=pady)
+        if len(self.buttons) > 0:
+            self.frame.pack(fill='y', side=LEFT)
 
     def clear(self):
         self.frame.pack_forget()
@@ -42,4 +45,6 @@ class Column:
         self.frame.pack_forget()
         #self.frame = Frame(self.master, bg=self.bg)
         self.frame = VerticalScrolledFrame(self.master,self.style)
-        self.frame.pack(fill='y', side=LEFT)
+        self.buttons = []
+        if len(self.buttons) > 0:
+            self.frame.pack(fill='y', side=LEFT)

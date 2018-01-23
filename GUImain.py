@@ -27,16 +27,15 @@ def run():
             self.master.configure(background='slate grey')
             self.forum = None
             self.game = None
-            self.Sports = Column(self.master, 'SF.TFrame')
-            self.Games = Column(self.master, 'GF.TFrame')
-            self.Links = Column(self.master, 'BF.TFrame')
+            self.Sports = Column(self.master, 'SeaGreen3')
+            self.Games = Column(self.master, 'SkyBlue3')
+            self.Links = Column(self.master, 'forest green')
             self.make_sport_buttons()
 
         def make_sport_buttons(self):
             buttons = []
             temp_button = None
             for sport in SPORTS:
-                #button = Button(self.Sports.frame, text=sport, padx=2, pady=10)
                 button = Button(self.Sports.frame.interior, text=sport, style='SB.TButton')
                 button.config(command=lambda address=SPORTS[sport], but=button: self.sport_click(but, address))
                 if temp_button is None:
@@ -53,13 +52,10 @@ def run():
             self.forum.get_games()
             buttons = []
             for game in self.forum.games:
-                #temp_button = Button(self.Games.frame, text=game.text, pady=5)
                 temp_button = Button(self.Games.frame.interior, text=game.text)
                 temp_button.config(command=lambda g=game, but=temp_button: self.game_click(g, but))
                 buttons += [temp_button]
             if not buttons:
-                #buttons += [Button(self.Games.frame, text='No Games Found. Click to visit forum.',
-                #                  command=lambda add=address: webbrowser.open_new_tab(add))]
                 buttons += [Button(self.Games.frame.interior, text='No Games Found. Click to visit forum.',
                                    command=lambda add=address: webbrowser.open_new_tab(add))]
             self.Games.update_buttons(buttons,'x',5)
@@ -70,7 +66,6 @@ def run():
             self.game = game
             self.game.get_links()
             links = []
-            #links += [Label(self.Links.frame, text='ACESTREAMS', background='gold', relief=GROOVE)]
             links += [Label(self.Links.frame.interior, text='ACESTREAMS', background='gold', relief=GROOVE)]
             for ace in game.ace_links:
                 #link = Button(self.Links.frame, text=ace, fg='blue', cursor='hand2', pady=2)
@@ -79,7 +74,6 @@ def run():
                 links += [link]
             links += [Label(self.Links.frame.interior, text='WEB STREAMS', background='gold', relief=GROOVE)]
             for web in game.web_links:
-                #link = Button(self.Links.frame, text=web, fg='blue', cursor='hand2', pady=2)
                 link = Button(self.Links.frame.interior, text=web, cursor='hand2')
                 link.config(command=lambda but=link, l=web: self.open_link(but,l))
                 links += [link]
@@ -96,7 +90,7 @@ def run():
             exit()
 
     root = Tk()
-    root.geometry("1200x800")
+    root.geometry("+10+10")
     app = Window(root)
 
     STYLE = Style()
