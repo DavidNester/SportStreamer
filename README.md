@@ -11,7 +11,7 @@ gives links to web streams and will open them as a new tab in your browser.
 - Game.py -- Class for a game (also a post in a forum)
 - Column.py -- Stores list of buttons and wrapper for scrollable frame
 - scrframe -- Scrollable frame class found on stackoverflow
-- CommandLineMain.py -- initial version with a command line interface. most basic functionality.
+- OLD -- Files that I no longer use. Command line interface and more basic GUI version
 
 This works on my 2013 Macbook Pro with HighSierra 10.13.2. Have not tested on other platforms or OS versions.
 
