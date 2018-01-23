@@ -40,3 +40,4 @@ pip install -r requirements.txt
 python GUImain.py 
 ```
 Some mac users may have to use "python3 GUImain.py"
+![Alt text](SportStreamer/UseScreenshot.png "Use Screenshot")
