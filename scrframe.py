@@ -1,13 +1,8 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-#from tkinter import *   # from x import * is bad practice
-#from tkinter.ttk import *
 from Utility import *
 # http://tkinter.unpythonic.net/wiki/VerticalScrolledFrame
 
 
 def MouseWheelHandler(event):
-
     def delta(event):
         if event.num == 5 or event.delta < 0:
             return -1
@@ -21,14 +16,13 @@ class VerticalScrolledFrame(Frame):
     * Use the 'interior' attribute to place widgets inside the scrollable frame
     * Construct and pack/place/grid normally
     * This frame only allows vertical scrolling
-
     """
-    def __init__(self, parent, style, *args, **kw):
+    def __init__(self, parent, bgcolor, *args, **kw):
         Frame.__init__(self, parent, *args, **kw)
         # create a canvas object and a vertical scrollbar for scrolling it
         vscrollbar = Scrollbar(self, orient=VERTICAL)
         vscrollbar.pack(fill=Y, side=RIGHT, expand=FALSE)
-        self.canvas = canvas = Canvas(self, bg=style,bd=0, highlightthickness=0,
+        self.canvas = canvas = Canvas(self, bg=bgcolor,bd=0, highlightthickness=0,
                         yscrollcommand=vscrollbar.set)
         self.canvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
         vscrollbar.config(command=self.canvas.yview)
@@ -42,8 +36,7 @@ class VerticalScrolledFrame(Frame):
         self.canvas.bind("<Button-5>", self._on_mousewheel)
 
         # create a frame inside the canvas which will be scrolled with it
-        #self.interior = interior = Frame(self.canvas,style='SF.TFrame')
-        self.interior = interior = OldFrame(self.canvas, bg=style)
+        self.interior = interior = OldFrame(self.canvas, bg=bgcolor)
         interior_id = self.canvas.create_window(0, 0, window=interior,
                                            anchor=NW)
 
@@ -78,54 +71,4 @@ class VerticalScrolledFrame(Frame):
 
 
 if __name__ == "__main__":
-
-    class SampleApp(Tk):
-        def __init__(self, *args, **kwargs):
-            root = Tk.__init__(self, *args, **kwargs)
-            style = Style(self)
-            style.configure("TFrame", background="#333")
-            style.configure('SF.TFrame', background='SeaGreen3')
-            # sport button
-            style.configure('SB.TButton', background='red', padx=2, pady=10)
-            style.configure('TButton', padx=10)
-
-            self.frame1 = VerticalScrolledFrame(root, style=style)
-            self.frame1.pack(side=LEFT)
-            buttons = []
-            for i in range(10):
-                buttons.append(Button(self.frame1.interior, text="Button " + str(i)))
-                buttons[-1].pack()
-            self.frame2 = VerticalScrolledFrame(root, style=style)
-            self.frame2.pack(side=LEFT)
-            buttons = []
-            for i in range(10):
-                buttons.append(Button(self.frame2.interior, text="Button " + str(i), style='SB.TButton'))
-                buttons[-1].pack()
-    class App(Tk):
-        def __init__(self, *args, **kwargs):
-            root = Tk.__init__(self, *args, **kwargs)
-            #self.attributes('-alpha',0.3)
-            style = Style(self)
-            style.configure("TFrame", background="#333")
-            style.configure('SF.TFrame', bg='SeaGreen3')
-            # sport button
-            style.configure('SB.TButton', highlightbackground='red', padx=2, pady=10)
-            style.configure('TButton', padx=10)
-
-            self.frame1 = Frame(root, style='SF.TFrame')
-            self.frame1.pack(side=LEFT)
-            buttons = []
-            for i in range(10):
-                buttons.append(Button(self.frame1, text="Button " + str(i)))
-                buttons[-1].pack(pady=10)
-            self.frame2 = Frame(root)
-            self.frame2.pack(side=LEFT)
-            buttons = []
-            for i in range(10):
-                buttons.append(Button(self.frame2, text="Button " + str(i), style='SB.TButton'))
-                buttons[-1].pack()
-
-
-    #app = SampleApp()
-    app = App()
-    app.mainloop()
+    pass

@@ -18,6 +18,7 @@ from tkinter.ttk import *
 import webbrowser
 from unidecode import unidecode
 
+
 def message_box(message):
     r = Tk()
     width = min(len(message)*7 + 30, 830)
@@ -25,7 +26,7 @@ def message_box(message):
     r.geometry(dim)
     r.attributes('-topmost', True)
     r.title('Error')
-    Label(r, text=message,wraplength=800).pack()
+    Label(r, text=message, wraplength=800).pack()
 
 
 def open_soda_player(ace_link):
@@ -67,20 +68,16 @@ def get_bs(address):
     opener = build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     response = None
-    i = 0
-    while response is None and i < 10:
-        try:
-            response = opener.open(address)
-        except UnicodeEncodeError:
-            response = opener.open(unidecode(address))
-        except:
-            pass
-        i += 1
+    try:
+        response = opener.open(address)
+    except UnicodeEncodeError:
+        response = opener.open(unidecode(address))
+    except:
+        pass
     if response is None:
         return None
     page = response.read()
     return BeautifulSoup(page, "html.parser")
-
 
 
 DOMAIN = 'https://www.reddit.com'
@@ -93,3 +90,5 @@ SPORTS = {'Soccer': 'https://www.reddit.com/r/soccerstreams/',
           'NHL': 'https://www.reddit.com/r/NHLStreams/',
           'MLB': 'https://www.reddit.com/r/MLBStreams/'}
 
+if __name__ == "__main__":
+    pass

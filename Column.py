@@ -2,23 +2,11 @@ from Utility import *
 from scrframe import VerticalScrolledFrame
 
 
-def MouseWheelHandler(event):
-    global count
-
-    def delta(event):
-        if event.num == 5 or event.delta < 0:
-            return -1
-        return 1
-
-    count += delta(event)
-    print(count)
-
-
 class Column:
     def __init__(self, master, bgcolor):
         self.master = master
         self.bgcolor = bgcolor
-        self.frame = VerticalScrolledFrame(master,self.bgcolor)
+        self.frame = VerticalScrolledFrame(master, self.bgcolor)
         self.buttons = []
         self.previous = None
 
@@ -41,5 +29,8 @@ class Column:
 
     def destroy(self):
         self.frame.pack_forget()
-        self.frame = VerticalScrolledFrame(self.master,self.bgcolor)
+        self.frame = VerticalScrolledFrame(self.master, self.bgcolor)
         self.buttons = []
+
+if __name__ == "__main__":
+    pass

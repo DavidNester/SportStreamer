@@ -2,9 +2,9 @@ from Utility import *
 from Game import Game
 
 
-def hasNumbers(inputString):
-    #from https://stackoverflow.com/a/19859308/6138243
-    return any(char.isdigit() for char in inputString)
+def has_numbers(input_string):
+    # from https://stackoverflow.com/a/19859308/6138243
+    return any(char.isdigit() for char in input_string)
 
 
 class Forum:
@@ -19,8 +19,11 @@ class Forum:
             message_box('Error accessing page: please visit ' + self.address + ' to get games')
             return
         for tag in self.bs.find_all('a', href=True, class_='title may-blank '):
-            if hasNumbers(tag.text):  # gets rid of most non-game threads
+            if has_numbers(tag.text):  # gets rid of most non-game threads
                 self.games += [Game(tag.text, DOMAIN + tag['href'])]
 
     def __str__(self):
         return self.address.split('/')[-2]
+
+if __name__ == "__main__":
+    pass

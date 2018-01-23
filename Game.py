@@ -12,7 +12,7 @@ class Game:
     def get_links(self):
         self.bs = get_bs(self.address)
         if self.bs is None:
-            message_box('Error accessing page: please visit '+ self.address + ' to get links')
+            message_box('Error accessing page: please visit ' + self.address + ' to get links')
             return
         self.get_ace_links()
         self.get_web_links()
@@ -35,3 +35,6 @@ class Game:
 
     def __str__(self):
         return self.text
+
+if __name__ == "__main__":
+    pass
