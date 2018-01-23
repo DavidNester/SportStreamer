@@ -13,6 +13,7 @@ import sys
 import subprocess
 from tkinter import *
 from tkinter import Button as OldButton
+from tkinter import Frame as OldFrame
 from tkinter.ttk import *
 import webbrowser
 from unidecode import unidecode

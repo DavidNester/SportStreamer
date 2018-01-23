@@ -1,9 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from tkinter import *   # from x import * is bad practice
-from tkinter.ttk import *
-
+#from tkinter import *   # from x import * is bad practice
+#from tkinter.ttk import *
+from Utility import *
 # http://tkinter.unpythonic.net/wiki/VerticalScrolledFrame
+
 
 def MouseWheelHandler(event):
 
@@ -41,7 +42,8 @@ class VerticalScrolledFrame(Frame):
         self.canvas.bind("<Button-5>", self._on_mousewheel)
 
         # create a frame inside the canvas which will be scrolled with it
-        self.interior = interior = Frame(self.canvas,style='SF.TFrame')
+        #self.interior = interior = Frame(self.canvas,style='SF.TFrame')
+        self.interior = interior = OldFrame(self.canvas, bg=style)
         interior_id = self.canvas.create_window(0, 0, window=interior,
                                            anchor=NW)
 

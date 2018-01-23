@@ -36,7 +36,7 @@ def run():
             buttons = []
             temp_button = None
             for sport in SPORTS:
-                button = OldButton(self.Sports.frame.interior, text=sport)
+                button = OldButton(self.Sports.frame.interior, text=sport,pady=10)
                 button.config(command=lambda address=SPORTS[sport], but=button: self.sport_click(but, address))
                 if temp_button is None:
                     temp_button = button
@@ -52,11 +52,11 @@ def run():
             self.forum.get_games()
             buttons = []
             for game in self.forum.games:
-                temp_button = OldButton(self.Games.frame.interior, text=game.text)
+                temp_button = OldButton(self.Games.frame.interior, text=game.text,pady=5,padx=2)
                 temp_button.config(command=lambda g=game, but=temp_button: self.game_click(g, but))
                 buttons += [temp_button]
             if not buttons:
-                buttons += [OldButton(self.Games.frame.interior, text='No Games Found. Click to visit forum.',
+                buttons += [OldButton(self.Games.frame.interior, text='No Games Found. Click to visit forum.', pady=5,
                                    command=lambda add=address: webbrowser.open_new_tab(add))]
             self.Games.update_buttons(buttons,'x',5)
 
@@ -69,7 +69,7 @@ def run():
             links += [Label(self.Links.frame.interior, text='ACESTREAMS', background='gold', relief=GROOVE)]
             for ace in game.ace_links:
                 #link = Button(self.Links.frame, text=ace, fg='blue', cursor='hand2', pady=2)
-                link = OldButton(self.Links.frame.interior, text=ace, cursor='hand2')
+                link = OldButton(self.Links.frame.interior, text=ace, cursor='hand2', pady=2)
                 link.config(command=lambda but=link,l=clean_ace(ace): self.open_link(but,l))
                 links += [link]
             links += [Label(self.Links.frame.interior, text='WEB STREAMS', background='gold', relief=GROOVE)]
@@ -91,22 +91,8 @@ def run():
 
     root = Tk()
     root.geometry("+10+10")
+    root.geometry("%dx%d" % (root.winfo_screenwidth()*.75,root.winfo_screenheight()*.5))
     app = Window(root)
-
-    STYLE = Style()
-    #STYLE.theme_use('aqua')
-    # sport frame
-    STYLE.configure('SF.TFrame', highlightbackground='SeaGreen3')
-    # sport button
-    STYLE.configure('SB.TButton', padx=2, pady=10)
-    # game frame
-    STYLE.configure('GF.TFrame', background='SkyBlue3')
-    # game button
-    STYLE.configure('GB.TButton', pady=5)
-    # link frame
-    STYLE.configure('LF.TFrame', background='forest green')
-    # link button
-    STYLE.configure('LB.TButton', pady=2)
 
     root.mainloop()
 

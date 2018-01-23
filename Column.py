@@ -21,14 +21,9 @@ class Column:
         self.frame = VerticalScrolledFrame(master,self.bgcolor)
         self.buttons = []
         self.previous = None
-        style = Style()
-        style.configure('selected.TButton', highlightbackground='gray')
 
     def select(self, button):
-        style = Style()
-        style.configure('selected.TButton', highlightbackground='gray')
         if self.previous:
-            #self.previous.config(style='TButton')
             self.previous.config(highlightbackground='white')
         button.config(highlightbackground='gray')
         self.previous = button
