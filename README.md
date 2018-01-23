@@ -9,12 +9,17 @@ gives links to web streams and will open them as a new tab in your browser.
 - Utility.py -- contains a few functions, global variables, and import statements
 - Forum.py -- Class for a reddit streaming forum like [Soccer Streams](https://www.reddit.com/r/soccerstreams/)
 - Game.py -- Class for a game (also a post in a forum)
+- Column.py -- Stores list of buttons and wrapper for scrollable frame
+- scrframe -- Scrollable frame class found on stackoverflow
 - CommandLineMain.py -- initial version with a command line interface. most basic functionality.
 
-This project is still in *early development stages* so there are many features to add, bugs to
-fix, and lots cleaning to be done. It is now at a stage where it is functional for me in my
-needs. It still requires some technical knowledge to use but I am hoping to get it to a point
-where anyone could download and use it.
+This works on my 2013 Macbook Pro with HighSierra 10.13.2. Have not tested on other platforms or OS versions.
+
+# Things I Intend To Do
+- Compile into app so that script doesn't have to be run every time
+- Get game data
+- Directly to chromecast
+- GUI improvements
 
 Please feel free to add to it or suggest updates. I am using this as a learning experience
 and am adding things as I discover them. I am sure I am doing many things in bad ways -- some I
@@ -34,5 +39,4 @@ cd SportStreamer
 pip install -r requirements.txt
 python GUImain.py 
 ```
-
-I apologize for the horrible GUI...
+Some mac users may have to use "python3 GUImain.py"
