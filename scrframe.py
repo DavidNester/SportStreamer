@@ -40,12 +40,8 @@ class VerticalScrolledFrame(Frame):
         self.canvas.bind("<Button-4>", self._on_mousewheel)
         self.canvas.bind("<Button-5>", self._on_mousewheel)
 
-        s = Style()
-        s.configure('TFrame',bg=style)
-        s.configure('Fuck.TFrame', bg=style)
         # create a frame inside the canvas which will be scrolled with it
-        self.interior = interior = Frame(self.canvas,style='Fuck.TFrame')
-        self.interior.__setattr__('-alpha',0.1)
+        self.interior = interior = Frame(self.canvas,style='SF.TFrame')
         interior_id = self.canvas.create_window(0, 0, window=interior,
                                            anchor=NW)
 

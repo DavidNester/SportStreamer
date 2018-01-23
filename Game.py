@@ -30,7 +30,7 @@ class Game:
             if 'grandma' in tag['href']:
                 self.web_links += [tag['href']]
         for tag in self.bs.find_all('a', rel='nofollow', href=True):
-            if 'http' in tag['href'] and 'reddit.com' not in tag['href']:
+            if 'http' in tag['href'] and 'reddit.com' not in tag['href'] and '.png' not in tag['href']:
                 self.web_links += [tag['href']]
 
     def __str__(self):

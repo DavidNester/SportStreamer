@@ -36,7 +36,7 @@ def run():
             buttons = []
             temp_button = None
             for sport in SPORTS:
-                button = Button(self.Sports.frame.interior, text=sport, style='SB.TButton')
+                button = OldButton(self.Sports.frame.interior, text=sport)
                 button.config(command=lambda address=SPORTS[sport], but=button: self.sport_click(but, address))
                 if temp_button is None:
                     temp_button = button
@@ -45,23 +45,23 @@ def run():
             self.sport_click(temp_button, SPORTS['Soccer'])
             
         def sport_click(self, button, address):
-            #self.Sports.select(button)
+            self.Sports.select(button)
             self.Links.destroy()
             self.Games.destroy()
             self.forum = Forum(address)
             self.forum.get_games()
             buttons = []
             for game in self.forum.games:
-                temp_button = Button(self.Games.frame.interior, text=game.text)
+                temp_button = OldButton(self.Games.frame.interior, text=game.text)
                 temp_button.config(command=lambda g=game, but=temp_button: self.game_click(g, but))
                 buttons += [temp_button]
             if not buttons:
-                buttons += [Button(self.Games.frame.interior, text='No Games Found. Click to visit forum.',
+                buttons += [OldButton(self.Games.frame.interior, text='No Games Found. Click to visit forum.',
                                    command=lambda add=address: webbrowser.open_new_tab(add))]
             self.Games.update_buttons(buttons,'x',5)
 
         def game_click(self, game, button):
-            #self.Games.select(button)
+            self.Games.select(button)
             self.Links.destroy()
             self.game = game
             self.game.get_links()
@@ -69,18 +69,18 @@ def run():
             links += [Label(self.Links.frame.interior, text='ACESTREAMS', background='gold', relief=GROOVE)]
             for ace in game.ace_links:
                 #link = Button(self.Links.frame, text=ace, fg='blue', cursor='hand2', pady=2)
-                link = Button(self.Links.frame.interior, text=ace, cursor='hand2')
+                link = OldButton(self.Links.frame.interior, text=ace, cursor='hand2')
                 link.config(command=lambda but=link,l=clean_ace(ace): self.open_link(but,l))
                 links += [link]
             links += [Label(self.Links.frame.interior, text='WEB STREAMS', background='gold', relief=GROOVE)]
             for web in game.web_links:
-                link = Button(self.Links.frame.interior, text=web, cursor='hand2')
+                link = OldButton(self.Links.frame.interior, text=web, cursor='hand2')
                 link.config(command=lambda but=link, l=web: self.open_link(but,l))
                 links += [link]
             self.Links.update_buttons(links,'x',2)
 
         def open_link(self,button,link):
-            #button.config(highlightbackground='gray')
+            button.config(highlightbackground='gray')
             if 'acestream://' in link:
                 open_soda_player(link)
             else:
@@ -94,8 +94,9 @@ def run():
     app = Window(root)
 
     STYLE = Style()
+    #STYLE.theme_use('aqua')
     # sport frame
-    STYLE.configure('SF.TFrame', background='SeaGreen3')
+    STYLE.configure('SF.TFrame', highlightbackground='SeaGreen3')
     # sport button
     STYLE.configure('SB.TButton', padx=2, pady=10)
     # game frame

@@ -12,6 +12,7 @@ import urllib
 import sys
 import subprocess
 from tkinter import *
+from tkinter import Button as OldButton
 from tkinter.ttk import *
 import webbrowser
 from unidecode import unidecode
