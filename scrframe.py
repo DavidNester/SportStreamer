@@ -1,5 +1,14 @@
+"""
+Author: David Nester
+Date: 1.23.2018
+# Python 3.6
+
+Modification of code for vertical scroll frame from http://tkinter.unpythonic.net/wiki/VerticalScrolledFrame
+Class that places a canvas on the window with frame containing widgets inside. Frame can be scrolled.
+It is a little buggy but still works well. Only scrolls the frame with the mouse in it.
+Old frame refers to the tkinter frame and not the ttk frame
+"""
 from Utility import *
-# http://tkinter.unpythonic.net/wiki/VerticalScrolledFrame
 
 
 def MouseWheelHandler(event):
@@ -22,8 +31,8 @@ class VerticalScrolledFrame(Frame):
         # create a canvas object and a vertical scrollbar for scrolling it
         vscrollbar = Scrollbar(self, orient=VERTICAL)
         vscrollbar.pack(fill=Y, side=RIGHT, expand=FALSE)
-        self.canvas = canvas = Canvas(self, bg=bgcolor,bd=0, highlightthickness=0,
-                        yscrollcommand=vscrollbar.set)
+        self.canvas = canvas = Canvas(self, bg=bgcolor, bd=0, highlightthickness=0,
+                                      yscrollcommand=vscrollbar.set)
         self.canvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
         vscrollbar.config(command=self.canvas.yview)
 
@@ -38,7 +47,7 @@ class VerticalScrolledFrame(Frame):
         # create a frame inside the canvas which will be scrolled with it
         self.interior = interior = OldFrame(self.canvas, bg=bgcolor)
         interior_id = self.canvas.create_window(0, 0, window=interior,
-                                           anchor=NW)
+                                                anchor=NW)
 
         self.interior.bind('<Enter>', self._bound_to_mousewheel)
         self.interior.bind('<Leave>', self._unbound_to_mousewheel)
@@ -60,6 +69,7 @@ class VerticalScrolledFrame(Frame):
                 canvas.itemconfigure(interior_id, width=canvas.winfo_width())
         self.canvas.bind('<Configure>', _configure_canvas)
 
+    # functions for only scrolling when the mouse is over the frame
     def _bound_to_mousewheel(self, event):
         self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
 

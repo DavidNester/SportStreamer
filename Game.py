@@ -1,3 +1,11 @@
+"""
+AUTHOR: David Nester
+DATE: 11.01.2018
+
+Class for a Game (a post in a subreddit). Goes through the page and gets all acestream links and all external links to
+web pages. This method is not perfect for the web links because there are occasionally links to other things but it
+has been pretty successful in my experience so far.
+"""
 from Utility import *
 
 
@@ -25,7 +33,7 @@ class Game:
 
     def get_web_links(self):
         self.web_links = []
-        # added because it wasn't catching links from grandma streams
+        # added because it wasn't catching links from grandma streams (usually pretty high quality)
         for tag in self.bs.find_all('a', href=True):
             if 'grandma' in tag['href']:
                 self.web_links += [tag['href']]

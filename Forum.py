@@ -1,3 +1,11 @@
+"""
+AUTHOR: David Nester
+DATE: 11.01.2018
+
+Class for a subreddit. Gets all games from reddit. Currently checks for number in post title to check if it is
+a game or not. This works pretty well (catches all games) but doesnt filter out all of the other subreddit posts.
+I don't worry about this too much because any user will see the difference there.
+"""
 from Utility import *
 from Game import Game
 

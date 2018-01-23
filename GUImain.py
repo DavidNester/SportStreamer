@@ -5,6 +5,7 @@ Date: 11.01.2018
 PYTHON 3.6
 Program to Automatically mine links from reddit sport streaming sites
 User chooses sport and then game and all links are presented without sorting through forums
+This file runs the GUI
 """
 from Utility import *
 from Game import Game
@@ -31,6 +32,7 @@ def run():
             self.make_sport_buttons()
 
         def make_sport_buttons(self):
+            # makes buttons for each sport
             buttons = []
             temp_button = None
             for sport in SPORTS:
@@ -43,6 +45,7 @@ def run():
             self.sport_click(temp_button, SPORTS['Soccer'])
             
         def sport_click(self, button, address):
+            # gets games and makes buttons after sport is clicked
             self.Sports.select(button)
             self.Links.destroy()
             self.Games.destroy()
@@ -59,16 +62,19 @@ def run():
             self.Games.update_buttons(buttons, 'x', 5)
 
         def game_click(self, game, button):
+            # gets links and make buttons
             self.Games.select(button)
             self.Links.destroy()
             self.game = game
             self.game.get_links()
             links = []
+            # ace links
             links += [Label(self.Links.frame.interior, text='ACESTREAMS', background='gold', relief=GROOVE)]
             for ace in game.ace_links:
                 link = OldButton(self.Links.frame.interior, fg='blue', text=ace, cursor='hand2', pady=2)
                 link.config(command=lambda but=link, l=clean_ace(ace): self.open_link(but, l))
                 links += [link]
+            # web links
             links += [Label(self.Links.frame.interior, text='WEB STREAMS', background='gold', relief=GROOVE)]
             for web in game.web_links:
                 link = OldButton(self.Links.frame.interior, fg='blue', text=web, cursor='hand2')
@@ -77,6 +83,7 @@ def run():
             self.Links.update_buttons(links, 'x', 2)
 
         def open_link(self, button, link):
+            # wrapper function to open links. Checks for ace or web
             button.config(highlightbackground='gray')
             if 'acestream://' in link:
                 open_soda_player(link)
