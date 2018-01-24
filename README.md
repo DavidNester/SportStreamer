@@ -1,5 +1,4 @@
-#     SportStreamer
-
+#     SportStreamer     <img align="right" src="https://github.com/DavidNester/SportStreamer/blob/master/logo.png" height="150" width="150">
 Application used to mine streaming links for various sports from reddit forums designated for
 posting stream links. I use Beautiful Soup to parse the pages and get the links. This uses
 acestreams and opens them automatically in [SodaPlayer](https://www.sodaplayer.com/). It also
