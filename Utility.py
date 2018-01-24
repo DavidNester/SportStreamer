@@ -107,7 +107,9 @@ SPORTS = {'Soccer': 'https://www.reddit.com/r/soccerstreams/',
           'College Basketball': 'https://www.reddit.com/r/ncaaBBallStreams/',
           'NHL': 'https://www.reddit.com/r/NHLStreams/',
           'MLB': 'https://www.reddit.com/r/MLBStreams/',
-          'Golf': 'https://www.reddit.com/r/PuttStreams/'}
+          'Golf': 'https://www.reddit.com/r/PuttStreams/',
+          'Cricket': 'https://www.reddit.com/r/cricket_streams/',
+          'MMA': 'https://www.reddit.com/r/MMAStreams/'}
 
 if __name__ == "__main__":
     pass
