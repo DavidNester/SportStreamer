@@ -45,4 +45,5 @@ python GUImain.py
 ```
 Mac users may have to use ```python3 GUImain.py```
 
-![Alt text](https://github.com/DavidNester/SportStreamer/blob/master/UseScreenshot.png "Use Screenshot")
+How it looks on my screen:
+![Example](https://github.com/DavidNester/SportStreamer/blob/master/UseScreenshot.png "Use Screenshot")
