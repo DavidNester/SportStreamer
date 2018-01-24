@@ -27,7 +27,7 @@ class Forum:
             message_box('Error accessing page: please visit ' + self.address + ' to get games')
             return
         for tag in self.bs.find_all('a', href=True, class_='title may-blank '):
-            if has_numbers(tag.text):  # gets rid of most non-game threads
+            if has_numbers(tag.text) or 'Game Thread:' in tag.text:  # gets rid of most non-game threads
                 self.games += [Game(tag.text, DOMAIN + tag['href'])]
 
     def __str__(self):
