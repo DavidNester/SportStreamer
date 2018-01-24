@@ -81,7 +81,7 @@ def clean_ace(full_string):
 
 
 def get_bs(address):
-    #gets beautiful soup object of requested page
+    # gets beautiful soup object of requested page
     opener = build_opener()
     # pretends to be firefox to get access to all pages
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
