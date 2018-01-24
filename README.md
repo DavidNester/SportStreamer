@@ -29,6 +29,10 @@ suggestions, and improvements are welcomed.
 #     To Use
 Uses [Python 3.6.2](https://www.python.org/downloads/release/python-362/)
 Install with [pip](https://pip.pypa.io/en/stable/installing/#installing-with-get-pip-py) 
+
+*Mac users may need to go to /Applications/Python 3.6/ and run Install Certificates.command (double click on the file)*
+
+In your command line:
 ```
 cd location/to/save/project/in/
 mkdir SportStreamer
@@ -39,6 +43,6 @@ cd SportStreamer
 pip install -r requirements.txt
 python GUImain.py 
 ```
-Some mac users may have to use "python3 GUImain.py"
+Mac users may have to use ```python3 GUImain.py```
 
 ![Alt text](https://github.com/DavidNester/SportStreamer/blob/master/UseScreenshot.png "Use Screenshot")
