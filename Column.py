@@ -28,7 +28,7 @@ class Column:
         # puts new buttons in the frame
         self.buttons = buttons
         for button in self.buttons:
-            button.pack(fill=fill, pady=pady)
+            button.pack(fill=fill,padx=5, pady=pady)
         self.frame.pack(fill='y', side=LEFT)
 
     # clear and destroy may be redundant
