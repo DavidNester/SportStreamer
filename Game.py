@@ -35,7 +35,7 @@ class Game:
         self.web_links = []
         # added because it wasn't catching links from grandma streams (usually pretty high quality)
         for tag in self.bs.find_all('a', href=True):
-            if 'grandma' in tag['href']:
+            if 'grandma' in tag['href'] and 'donate' not in tag['href']:
                 self.web_links += [tag['href']]
         for tag in self.bs.find_all('a', rel='nofollow', href=True):
             if 'http' in tag['href'] and 'reddit.com' not in tag['href'] and '.png' not in tag['href']:
