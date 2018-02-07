@@ -97,8 +97,12 @@ def run():
     root.geometry("+10+10")
     root.geometry("%dx%d" % (root.winfo_screenwidth()*.8, root.winfo_screenheight()*.5))
     app = Window(root)
-
-    root.mainloop()
+    while True:
+        try:
+            root.mainloop()
+            break
+        except UnicodeDecodeError:
+            pass
 
 if __name__ == "__main__":
     run()
