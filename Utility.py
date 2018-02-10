@@ -101,6 +101,7 @@ def get_bs(address):
 DOMAIN = 'https://www.reddit.com'
 SODA_PLAYER_OPENER = 'sodaplayer://?url='
 SPORTS = {'Soccer': 'https://www.reddit.com/r/soccerstreams/',
+          'Winter Olympics': 'https://www.reddit.com/r/WinterOlympicsStreams/',
           'College Football': 'https://www.reddit.com/r/CFBStreams/',
           'NFL': 'https://www.reddit.com/r/nflstreams/',
           'NBA': 'https://www.reddit.com/r/nbastreams/',
