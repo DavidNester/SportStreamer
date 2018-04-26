@@ -3,6 +3,7 @@ Application used to mine streaming links for various sports from reddit forums d
 posting stream links. I use Beautiful Soup to parse the pages and get the links. This uses
 acestreams and opens them automatically in [SodaPlayer](https://www.sodaplayer.com/). It also
 gives links to web streams and will open them as a new tab in your browser.
+## *Check out the Web version of this app here: [davidnester.github.io/sportstreamer](https://davidnester.github.io/sportstreamer). Site is still being developed.*
 
 - GUImain.py -- main file to run. Runs GUI
 - Utility.py -- contains a few functions, global variables, and import statements
